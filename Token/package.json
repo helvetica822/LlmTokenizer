@@ -1,0 +1,33 @@
+{
+  "name": "ai-token-counter",
+  "version": "1.0.0",
+  "description": "AI Token Counter Web Application for Multiple Providers (Anthropic, OpenAI, Gemini)",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "check": "svelte-check --tsconfig ./tsconfig.json"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "^3.0.0",
+    "@tsconfig/svelte": "^5.0.0",
+    "svelte": "^4.2.0",
+    "svelte-check": "^3.6.0",
+    "tslib": "^2.6.0",
+    "typescript": "^5.2.0",
+    "vite": "^5.0.0"
+  },
+  "dependencies": {
+    "@smui/button": "^7.0.0",
+    "@smui/card": "^7.0.0",
+    "@smui/circular-progress": "^7.0.0",
+    "@smui/layout-grid": "^7.0.0",
+    "@smui/paper": "^7.0.0",
+    "@smui/select": "^7.0.0",
+    "@smui/textfield": "^7.0.0",
+    "@smui/top-app-bar": "^7.0.0",
+    "tiktoken": "^1.0.21",
+    "vite-plugin-wasm": "^3.4.1"
+  }
+}

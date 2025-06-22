@@ -1,0 +1,180 @@
+/* Material UI Global Styles */
+:root {
+  --mdc-theme-primary: #1976d2;
+  --mdc-theme-secondary: #03dac6;
+  --mdc-theme-surface: #ffffff;
+  --mdc-theme-background: #f5f5f5;
+  --mdc-theme-error: #b00020;
+  --mdc-theme-on-primary: #ffffff;
+  --mdc-theme-on-secondary: #000000;
+  --mdc-theme-on-surface: #000000;
+  --mdc-theme-on-error: #ffffff;
+}
+
+/* Select Component Fixes */
+.mdc-select {
+  width: 100% !important;
+}
+
+.mdc-select__anchor {
+  width: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  position: relative !important;
+}
+
+.mdc-select__selected-text-container {
+  flex: 1 !important;
+  display: flex !important;
+  align-items: center !important;
+  min-width: 0 !important;
+  padding-right: 52px !important;
+}
+
+.mdc-select__selected-text {
+  width: 100% !important;
+  text-overflow: ellipsis !important;
+  overflow: hidden !important;
+  white-space: nowrap !important;
+}
+
+.mdc-select__dropdown-icon {
+  position: absolute !important;
+  right: 12px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  pointer-events: none !important;
+}
+
+.mdc-select--activated .mdc-select__dropdown-icon {
+  transform: translateY(-50%) rotate(180deg) !important;
+}
+
+.mdc-select__menu {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+/* Ensure proper z-index for dropdowns */
+.mdc-menu-surface {
+  z-index: 1000 !important;
+}
+
+/* Floating label positioning */
+.mdc-floating-label {
+  left: 16px !important;
+  right: auto !important;
+}
+
+.mdc-floating-label--float-above {
+  transform: translateY(-106%) scale(0.75) !important;
+}
+
+/* Text field improvements */
+.mdc-text-field {
+  width: 100% !important;
+}
+
+.mdc-text-field--textarea {
+  width: 100% !important;
+}
+
+/* Button improvements */
+.mdc-button {
+  width: 100% !important;
+}
+
+/* Card improvements */
+.mdc-card {
+  border-radius: 8px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* Layout improvements */
+.mdc-layout-grid {
+  padding: 0 !important;
+}
+
+.mdc-layout-grid__cell {
+  padding: 0 !important;
+}
+
+/* Top App Bar improvements */
+.mdc-top-app-bar {
+  background-color: var(--mdc-theme-primary) !important;
+  color: var(--mdc-theme-on-primary) !important;
+}
+
+/* Ripple effect improvements */
+.mdc-ripple-surface {
+  overflow: hidden;
+}
+
+/* Focus improvements */
+.mdc-select:not(.mdc-select--disabled).mdc-select--focused .mdc-floating-label {
+  color: var(--mdc-theme-primary) !important;
+}
+
+.mdc-text-field:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-floating-label {
+  color: var(--mdc-theme-primary) !important;
+}
+
+/* Disabled state improvements */
+.mdc-select--disabled {
+  opacity: 0.6;
+}
+
+.mdc-button--raised:disabled {
+  opacity: 0.6;
+}
+
+/* Loading state improvements */
+.mdc-circular-progress {
+  color: var(--mdc-theme-on-primary) !important;
+}
+
+/* Line ripple positioning */
+.mdc-line-ripple {
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  position: absolute !important;
+}
+
+/* Additional select fixes for proper alignment */
+.mdc-select .mdc-select__anchor {
+  height: 56px !important;
+  padding-left: 16px !important;
+  padding-right: 52px !important;
+}
+
+.mdc-select__selected-text-container {
+  height: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+/* Error and Result Display Fixes */
+.error-display,
+.result-display {
+  width: 100% !important;
+}
+
+.error-display .mdc-card,
+.result-display .mdc-card {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+}
+
+/* Error card specific styling */
+.error-display .mdc-card {
+  background-color: #ffebee !important;
+}
+
+/* Button in error header */
+.error-header .mdc-button {
+  width: auto !important;
+  min-width: auto !important;
+}

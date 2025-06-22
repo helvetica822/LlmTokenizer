@@ -1,0 +1,77 @@
+# フロントエンドコーディング規約
+
+## 命名規則
+- 関数名はcamelCaseを使用（例: `fetchUserData`）。
+- クラス名はPascalCaseを使用（例: `UserService`）。
+- 定数はUPPER_SNAKE_CASEを使用（例: `MAX_RETRY_COUNT`）。
+- インターフェース(interface)や型(type)はPascalCaseを使用（例: `UserProfile`）。
+- インターフェース(interface)や型(type)はIプレフィックス（例: IUser）は使用しない。
+- ローカル変数はcamelCaseを使用（例: `userName`）。
+- 列挙型はPascalCaseを使用（例: `enum UserRole { Admin, User }`）。
+- .tsファイルのファイル名はcamelCaseを使用（例: `primitiveUtility.ts`）。
+- Svelteのコンポーネントである.svelteファイルのファイル名はPascalCaseを使用（例: `ErrorAlert.svelte`）。
+- Svelteのストア変数やリアクティブ変数はcamelCaseを使用（例: `$userStore`）。
+
+## 関数設計
+- 関数は単一責任を原則とし、コメント行や空行を含まず20行以内に収めることが望ましい。
+- 引数は3つ以下とし、3つを超える場合やデフォルト値が必要な場合はオブジェクトで受け取ることが望ましい。
+- 戻り値は明示的な型を返す。
+- 複数の値を呼び出し元に返したい場合は分割代入を活用。
+- 関数設計の例は下記です。
+```typescript
+// 推奨
+interface FetchOptions {
+  userId: string;
+  timeout?: number;
+}
+async function fetchUser({ userId, timeout = 5000 }: FetchOptions): Promise<User> {
+  // 実装
+}
+```
+
+## エラーハンドリング
+- すべての非同期関数はtry-catchを明示的に記述。
+- エラーログは`console.error`で出力し、エラー原因を含むエラーメッセージを返す。
+- エラーハンドリングの例は下記です。
+```typescript
+class ApiError extends Error {
+  constructor(message: string) {
+    super(message);
+    this.name = "ApiError";
+  }
+}
+
+async function fetchUser(userId: string): Promise<User> {
+  try {
+    const response = await api.get(`/users/${userId}`);
+    return response.data;
+  } catch (error) {
+    console.error(`Failed to fetch user with ID ${userId}: ${error.message}`);
+    throw new ApiError(`ユーザー情報の取得に失敗しました (ID: ${userId})`);
+  }
+}
+```
+
+## 型安全性
+- TypeScriptのstrictモードを有効化。
+- `any`型は禁止、適切な型を定義。
+- 型推論の使用を基本とし、変数宣言と初期化のタイミングが異なる場合や`any`型に推論されてしまう場合のみ型注釈を使用。
+
+## コメント
+- 関数にはJSDoc形式で日本語のコメントを記述。
+- JSDocには@param, @returns, @throwsを使用。
+- クラスやインターフェースにもJSDocを使用し、クラスの役割や使用例を記述。
+- 実装の意図が不明確な場合は1行のコメントを追加。
+- コードに対して自己説明的なコメントは不要。
+- JSDocの例は下記です。
+```typescript
+/**
+ * 指定されたIDのユーザー情報を取得します。
+ * @param userId - ユーザーの一意な識別子
+ * @returns ユーザーオブジェクト
+ * @throws ユーザーが見つからない場合
+ */
+async function fetchUser(userId: string): Promise<User> {
+  // 実装
+}
+```
